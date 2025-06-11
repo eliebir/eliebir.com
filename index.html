@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rethinking...</title>
+    <title>The Full Animation</title>
     <style>
         html, body {
             margin: 0;
@@ -16,58 +16,65 @@
             background-color: #000;
             color: #fff;
             display: grid;
-            place-items: center;
-            font-family: 'Courier New', Courier, monospace; /* A classic "typing" font */
+            place-items: center; /* A modern way to center a single item */
         }
 
-        .container {
-            width: max-content; /* Container fits the text width */
-        }
-
-        .typing-text {
+        /* The container for our text element */
+        .typing-container {
+            width: max-content;
             font-size: 5vw; /* Large, responsive text */
+            font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
-            overflow: hidden; /* Ensures the text is revealed, not wrapped */
-            border-right: .15em solid orange; /* The blinking cursor */
-            white-space: nowrap; /* Keeps the text on a single line */
-            margin: 0 auto;
-            letter-spacing: .1em;
+        }
+
+        /* We will animate the text inside this empty paragraph */
+        .typing-text {
+            /* This is the magic! The 'ch' unit is the width of the "0" character */
+            /* We set the width based on the longest phrase (31 characters) */
+            width: 31ch;
             
-            /* The main animation magic! */
+            /* The animation that cycles through all our phrases */
             animation: 
-                typing 3.5s steps(30, end),
-                blink-caret .75s step-end infinite,
-                rethinking 12s steps(30, end) 4s infinite; /* The second animation is delayed */
+                typing-cycle 15s infinite, /* The main animation for text content and width */
+                blink .75s step-end infinite; /* The blinking cursor */
+
+            white-space: nowrap; /* Keep text on a single line */
+            overflow: hidden; /* Hide the text that is not yet "typed" */
+            border-right: 3px solid rgba(255,165,0,0.75); /* The cursor */
         }
 
-        /* The typing effect */
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
+        /* The main animation to cycle through typing phrases */
+        @keyframes typing-cycle {
+            /* Phrase 1: "Making something amazing..." (25 chars) */
+            0% { content: "Making something amazing..."; width: 0; }
+            20% { width: 25ch; } /* Type out */
+            30% { width: 25ch; } /* Pause */
+            33% { width: 0; } /* Backspace */
 
-        /* The cursor blinking effect */
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: orange; }
-        }
+            /* Phrase 2: "Crafting a masterpiece..." (25 chars) */
+            34% { content: "Crafting a masterpiece..."; } /* Change text (while hidden) */
+            54% { width: 25ch; } /* Type out */
+            64% { width: 25ch; } /* Pause */
+            67% { width: 0; } /* Backspace */
 
-        /* The "rethinking" animation after the first phrase */
-        @keyframes rethinking {
-            0% { width: 100%; content: "Making something amazing..."; }
-            25% { width: 0; } /* Backspace */
-            26% { width: 100%; content: "Crafting a masterpiece..."; } /* Change text (hidden) */
-            50% { width: 100%; } /* Type out new text */
-            75% { width: 0; } /* Backspace again */
-            76% { content: "Fine. It's just a black screen."; } /* Change text (hidden) */
-            100% { width: 100%; } /* Type out final text */
+            /* Phrase 3: "Fine. It's just a black screen." (31 chars) */
+            68% { content: "Fine. It's just a black screen."; } /* Change text */
+            92% { width: 31ch; } /* Type out */
+            100% { width: 31ch; } /* Pause before looping */
         }
-
+        
+        /* The blinking cursor animation */
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="typing-text">Making something amazing...</div>
+
+    <div class="typing-container">
+        <!-- The text is now generated entirely by CSS -->
+        <p class="typing-text"></p>
     </div>
+
 </body>
 </html>
