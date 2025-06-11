@@ -1,2 +1,2 @@
 # eliebir.com
-## helooooo HFIE
+This is a continuous work in progress, all for fun why not!
