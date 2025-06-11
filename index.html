@@ -3,55 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Magic</title>
-    
-    <!-- Embedded CSS starts here -->
+    <title>Rethinking...</title>
     <style>
-        /* This targets the entire HTML document and body to remove default spacing */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Prevents scrollbars from appearing */
         }
 
-        /* This styles the main body of the page */
         body {
-            background-color: #000000; /* A solid, pure black background */
-            color: #ffffff; /* Pure white text */
-            
-            /* This is the modern way to perfectly center content vertically and horizontally */
-            display: flex;
-            justify-content: center; /* Centers horizontally */
-            align-items: center; /* Centers vertically */
-
-            /* Sets a clean, modern font */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-family: 'Courier New', Courier, monospace; /* A classic "typing" font */
         }
 
-        /* This styles the main heading text */
-        h1 {
-            /* A large, responsive font size that is 6% of the viewport's width */
-            font-size: 6vw; 
-            
-            /* A slightly thinner font weight for an elegant look */
-            font-weight: 300; 
-            
-            /* Adds a subtle glow effect to the text to enhance the "magic" feel */
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-
-            /* Ensures the text itself is centered if it needs to wrap on small screens */
-            text-align: center;
-            padding: 20px; /* Prevents text from touching the screen edges */
+        .container {
+            width: max-content; /* Container fits the text width */
         }
+
+        .typing-text {
+            font-size: 5vw; /* Large, responsive text */
+            font-weight: bold;
+            overflow: hidden; /* Ensures the text is revealed, not wrapped */
+            border-right: .15em solid orange; /* The blinking cursor */
+            white-space: nowrap; /* Keeps the text on a single line */
+            margin: 0 auto;
+            letter-spacing: .1em;
+            
+            /* The main animation magic! */
+            animation: 
+                typing 3.5s steps(30, end),
+                blink-caret .75s step-end infinite,
+                rethinking 12s steps(30, end) 4s infinite; /* The second animation is delayed */
+        }
+
+        /* The typing effect */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* The cursor blinking effect */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+
+        /* The "rethinking" animation after the first phrase */
+        @keyframes rethinking {
+            0% { width: 100%; content: "Making something amazing..."; }
+            25% { width: 0; } /* Backspace */
+            26% { content: "Crafting a masterpiece..."; } /* Change text (hidden) */
+            50% { width: 100%; } /* Type out new text */
+            75% { width: 0; } /* Backspace again */
+            76% { content: "Fine. It's just a black screen."; } /* Change text (hidden) */
+            100% { width: 100%; } /* Type out final text */
+        }
+
     </style>
-    <!-- Embedded CSS ends here -->
-
 </head>
 <body>
-
-    <h1>This is where the magic happens</h1>
-
+    <div class="container">
+        <div class="typing-text">Making something amazing...</div>
+    </div>
 </body>
 </html>
