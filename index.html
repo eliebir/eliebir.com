@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Full Animation</title>
+    <title>Analyzing...</title>
     <style>
         html, body {
             margin: 0;
@@ -17,94 +17,67 @@
             color: #fff;
             display: grid;
             place-items: center;
-        }
-
-        .typing-container {
-            width: max-content;
-            font-size: 5vw;
             font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-        }
-
-        .typing-text {
-            position: relative;
-        }
-
-        .typing-text::before {
-            content: "Making something amazing...";
-            display: inline-block;
-            white-space: nowrap;
             overflow: hidden;
-            border-right: 3px solid rgba(255,165,0,0.75);
-            width: 0ch;
-            animation: typing-cycle 15s steps(31) infinite, blink .75s step-end infinite;
-            box-sizing: border-box;
         }
 
-        @keyframes typing-cycle {
-            /* Phrase 1: "Making something amazing..." (25 chars) */
-            0% {
-                content: "Making something amazing...";
-                width: 0ch;
-            }
-            10% {
-                content: "Making something amazing...";
-                width: 25ch;
-            }
-            20% {
-                content: "Making something amazing...";
-                width: 25ch;
-            }
-            25% {
-                content: "Making something amazing...";
-                width: 0ch;
-            }
-            /* Phrase 2: "Crafting a masterpiece..." (25 chars) */
-            26% {
-                content: "Crafting a masterpiece...";
-                width: 0ch;
-            }
-            36% {
-                content: "Crafting a masterpiece...";
-                width: 25ch;
-            }
-            46% {
-                content: "Crafting a masterpiece...";
-                width: 25ch;
-            }
-            51% {
-                content: "Crafting a masterpiece...";
-                width: 0ch;
-            }
-            /* Phrase 3: "Fine. It's just a black screen." (31 chars) */
-            52% {
-                content: "Fine. It's just a black screen.";
-                width: 0ch;
-            }
-            67% {
-                content: "Fine. It's just a black screen.";
-                width: 31ch;
-            }
-            87% {
-                content: "Fine. It's just a black screen.";
-                width: 31ch;
-            }
-            100% {
-                content: "Fine. It's just a black screen.";
-                width: 0ch;
-            }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
         }
 
-        @keyframes blink {
-            50% { border-color: transparent; }
+        #status-text {
+            font-size: clamp(20px, 4vw, 32px);
+            margin-bottom: 25px;
+            height: 40px;
+            transition: color 0.5s ease-in-out;
+        }
+
+        .loading-bar-container {
+            width: 100%;
+            height: 30px;
+            border: 2px solid #555;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: opacity 0.5s ease-in-out 0.2s;
+        }
+
+        .loading-bar-progress {
+            width: 0%;
+            height: 100%;
+            background-color: #ffa500;
+            animation: fill-bar 4s ease-out forwards;
+        }
+
+        @keyframes fill-bar {
+            from { width: 0%; }
+            to { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <div class="typing-container">
-        <p class="typing-text"></p>
+    <div class="container">
+        <h2 id="status-text">Compiling psychological profile...</h2>
+        <div class="loading-bar-container" id="loading-bar">
+            <div class="loading-bar-progress"></div>
+        </div>
     </div>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const statusText = document.getElementById('status-text');
+            const loadingBar = document.getElementById('loading-bar');
+
+            setTimeout(() => {
+                statusText.textContent = 'Analysis complete: You click on things you\'re told to click on.';
+                statusText.style.color = '#20c20e';
+                loadingBar.style.opacity = '0';
+            }, 4500);
+        });
+    </script>
 
 </body>
 </html>

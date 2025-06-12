@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Full Animation</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            display: grid;
+            place-items: center;
+        }
+
+        .typing-container {
+            width: max-content;
+            font-size: 5vw;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        .typing-text {
+            position: relative;
+        }
+
+        .typing-text::before {
+            content: "Making something amazing...";
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid rgba(255,165,0,0.75);
+            width: 0ch;
+            animation: typing-cycle 15s steps(31) infinite, blink .75s step-end infinite;
+            box-sizing: border-box;
+        }
+
+        @keyframes typing-cycle {
+            /* Phrase 1: "Making something amazing..." (25 chars) */
+            0% {
+                content: "Making something amazing...";
+                width: 0ch;
+            }
+            10% {
+                content: "Making something amazing...";
+                width: 25ch;
+            }
+            20% {
+                content: "Making something amazing...";
+                width: 25ch;
+            }
+            25% {
+                content: "Making something amazing...";
+                width: 0ch;
+            }
+            /* Phrase 2: "Crafting a masterpiece..." (25 chars) */
+            26% {
+                content: "Crafting a masterpiece...";
+                width: 0ch;
+            }
+            36% {
+                content: "Crafting a masterpiece...";
+                width: 25ch;
+            }
+            46% {
+                content: "Crafting a masterpiece...";
+                width: 25ch;
+            }
+            51% {
+                content: "Crafting a masterpiece...";
+                width: 0ch;
+            }
+            /* Phrase 3: "Fine. It's just a black screen." (31 chars) */
+            52% {
+                content: "Fine. It's just a black screen.";
+                width: 0ch;
+            }
+            67% {
+                content: "Fine. It's just a black screen.";
+                width: 31ch;
+            }
+            87% {
+                content: "Fine. It's just a black screen.";
+                width: 31ch;
+            }
+            100% {
+                content: "Fine. It's just a black screen.";
+                width: 0ch;
+            }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="typing-container">
+        <p class="typing-text"></p>
+    </div>
+
+</body>
+</html>
