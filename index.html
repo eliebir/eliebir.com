@@ -27,58 +27,29 @@
             text-align: center;
         }
 
-        #status-text {
-            font-size: clamp(20px, 4vw, 32px);
-            margin-bottom: 25px;
-            height: 40px;
-            transition: color 0.5s ease-in-out;
-        }
-
-        .loading-bar-container {
-            width: 100%;
-            height: 30px;
-            border: 2px solid #555;
-            border-radius: 5px;
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
             overflow: hidden;
-            transition: opacity 0.5s ease-in-out 0.2s;
+            margin-top: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px #222;
         }
-
-        .loading-bar-progress {
-            width: 0%;
-            height: 100%;
-            background-color: #ffa500;
-            animation: fill-bar 30s ease-out forwards;
-        }
-
-        @keyframes fill-bar {
-            from { width: 0%; }
-            to { width: 100%; }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
         }
     </style>
     <link rel="icon" type="image/x-icon" href="png-clipart-body-jewellery-line-konoha-white-text-thumbnail.png">
 </head>
 <body>
-
     <div class="container">
-        <h2 id="status-text">Loading your profile...</h2>
-        <b></b>
-        <div class="loading-bar-container" id="loading-bar">
-            <div class="loading-bar-progress"></div>
+        <h2>YUMA</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/stCxLxBMjYA" allowfullscreen></iframe>
         </div>
     </div>
-
-    <script>
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            const statusText = document.getElementById('status-text');
-            const loadingBar = document.getElementById('loading-bar');
-
-            setTimeout(() => {
-                statusText.textContent = 'Go drink some water. You\'re welcome!';
-                statusText.style.color = '#20c20e';
-                loadingBar.style.opacity = '0';
-            }, 30000);
-        });
-    </script>
 </body>
 </html>

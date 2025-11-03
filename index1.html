@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUMA</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        #status-text {
+            font-size: clamp(20px, 4vw, 32px);
+            margin-bottom: 25px;
+            height: 40px;
+            transition: color 0.5s ease-in-out;
+        }
+
+        .loading-bar-container {
+            width: 100%;
+            height: 30px;
+            border: 2px solid #555;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: opacity 0.5s ease-in-out 0.2s;
+        }
+
+        .loading-bar-progress {
+            width: 0%;
+            height: 100%;
+            background-color: #ffa500;
+            animation: fill-bar 30s ease-out forwards;
+        }
+
+        @keyframes fill-bar {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="png-clipart-body-jewellery-line-konoha-white-text-thumbnail.png">
+</head>
+<body>
+
+    <div class="container">
+        <h2 id="status-text">Loading your profile...</h2>
+        <b></b>
+        <div class="loading-bar-container" id="loading-bar">
+            <div class="loading-bar-progress"></div>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const statusText = document.getElementById('status-text');
+            const loadingBar = document.getElementById('loading-bar');
+
+            setTimeout(() => {
+                statusText.textContent = 'Go drink some water. You\'re welcome!';
+                statusText.style.color = '#20c20e';
+                loadingBar.style.opacity = '0';
+            }, 30000);
+        });
+    </script>
+</body>
+</html>
