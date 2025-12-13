@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Page</title>
+    <style>
+        :root{
+            --bg:#0b0b0c;
+            --panel:#121316;
+            --text:#e6eef6;
+            --muted:#9aa4af;
+            --accent:#7cc7ff;
+        }
+        html,body{
+            height:100%;
+            margin:0;
+            background:var(--bg);
+            color:var(--text);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+        body{
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+            padding:1.25rem;
+            padding-top:4rem;
+            box-sizing:border-box;
+        }
+        .topbar{
+            position:fixed;
+            left:1rem;
+            top:1rem;
+            z-index:40;
+        }
+        .topbar a{
+            color:var(--accent);
+            text-decoration:none;
+            font-weight:600;
+            background:rgba(255,255,255,0.02);
+            padding:.35rem .6rem;
+            border-radius:6px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.5);
+        }
+        a{ color:var(--accent); text-decoration:underline; }
+        .content {
+            flex: 1;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+        }
+        .email {
+            font-size: 24px;
+            text-align: center;
+        }
+        footer{ 
+            margin-top:auto; 
+            color:var(--muted); 
+            padding-bottom:1rem;
+            text-align:center;
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <a href="https://eliebir.com">HOME</a>
+    </div>
+    <div class="content">
+        <div class="email">info@eliebir.com</div>
+    </div>
+    <footer>&copy; YUMA</footer>
+</body>
+</html>
